@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="白菜的森林 —— 真白花音（Mashiro Kanon）毕业后日谈纪念档案馆。非官方粉丝纪念站。">
+<title>白菜的森林 · 真白花音后日谈纪念档案馆</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 夜空背景层 -->
+<div class="sky" aria-hidden="true">
+  <div class="moon"></div>
+  <div class="stars" id="stars"></div>
+  <div class="fireflies" id="fireflies"></div>
+</div>
+
+<header class="site-header">
+  <a class="brand" href="#/home">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M12 3c2.8 3 4.6 6 4.6 8.8 0 3-2 5.4-4.6 5.4s-4.6-2.4-4.6-5.4C7.4 9 9.2 6 12 3Z"/>
+        <path d="M12 17.2v3.8"/>
+        <path d="M9 21h6"/>
+      </svg>
+    </span>
+    <span class="brand-text">
+      <b>白菜的森林</b>
+      <i>LOVE·KANON FAN ARCHIVE</i>
+    </span>
+  </a>
+  <span class="official-badge" data-i18n="badge_official">非官方粉丝站</span>
+  <nav class="site-nav" aria-label="主导航">
+    <a href="#/home" data-i18n="nav_home" data-nav="home">首页</a>
+    <a href="#/timeline" data-i18n="nav_timeline" data-nav="timeline">足迹</a>
+    <a href="#/memory" data-i18n="nav_memory" data-nav="memory">记忆墙</a>
+    <a href="#/capsule" data-i18n="nav_capsule" data-nav="capsule">时光胶囊</a>
+    <a href="#/rank" data-i18n="nav_rank" data-nav="rank">贡献榜</a>
+    <a href="#/about" data-i18n="nav_about" data-nav="about">关于</a>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="语言切换">
+    <button class="lang-btn is-active" data-lang-btn="zh" data-i18n="lang_zh">中</button>
+    <button class="lang-btn" data-lang-btn="ja" data-i18n="lang_ja">日</button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 首页 ============ -->
+<section class="page" data-page="home" id="page-home">
+  <div class="hero">
+    <p class="hero-kicker" data-i18n="kicker">FAN MEMORIAL ARCHIVE · 2019 — 2026</p>
+    <h1 class="hero-title">白菜的森林</h1>
+    <p class="hero-sub" data-i18n="hero_sub">毕业不是终点，而是公主回到森林后，由我们共同续写的一场「后日谈」。</p>
+    <div class="hero-meta">
+      <span>真白花音 · 眞白 かのん · Mashiro Kanon</span>
+      <span class="dot" aria-hidden="true">·</span>
+      <span data-i18n="hero_meta2">非官方后日谈纪念档案馆</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#/timeline" data-i18n="cta_enter">进入森林 · 看她的足迹</a>
+      <a class="btn btn-ghost" href="#/memory" data-i18n="cta_write">写一封信</a>
+    </div>
+  </div>
+
+  <div class="countdown card reveal">
+    <div class="countdown-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.3">
+        <path d="M12 4.5c3.2 3.4 5.2 6.8 5.2 9.9 0 3.4-2.3 5.6-5.2 5.6s-5.2-2.2-5.2-5.6c0-3.1 2-6.5 5.2-9.9Z"/>
+        <path d="M12 15.2v2.2"/><path d="M9.5 19.6h5"/>
+        <path d="M12 4.5V3.2"/>
+      </svg>
+    </div>
+    <div class="countdown-body">
+      <p class="countdown-label" data-i18n="cd_label">下一个纪念日 · 毕业百日祭</p>
+      <p class="countdown-date">2026 年 8 月 9 日</p>
+      <p class="countdown-days">
+        <strong class="days-num" data-days>—</strong>
+        <span data-i18n="cd_days">天后，森林将亮起百日灯海</span>
+      </p>
+    </div>
+  </div>
+
+  <section class="stats" aria-label="关键数据">
+    <div class="stat reveal" style="--d:.05s"><strong>2019–2026</strong><span data-i18n="st1">七年足迹</span></div>
+    <div class="stat reveal" style="--d:.12s"><strong>216万+</strong><span data-i18n="st2">森林旅人</span></div>
+    <div class="stat reveal" style="--d:.19s"><strong>60+</strong><span data-i18n="st3">名场面存档</span></div>
+    <div class="stat reveal" style="--d:.26s"><strong>100+</strong><span data-i18n="st4">森林来信</span></div>
+  </section>
+
+  <section class="entries">
+    <h2 class="entries-title" data-i18n="entries_title">在森林里，你可以</h2>
+    <div class="entries-grid">
+      <a class="entry reveal" style="--d:.05s" href="#/timeline">
+        <span class="entry-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5V5.5a1 1 0 0 1 1-1h9.5l5.5 5.5v9.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/><path d="M14.5 4.5v5.5H20"/><path d="M8.5 15.5h7"/></svg>
+        </span>
+        <h3 data-i18n="ent_tl_t">足迹时间轴</h3>
+        <p data-i18n="ent_tl_d">从 2019 初配信到 2026 毕业，七年大事记与名场面。</p>
+        <span class="entry-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="entry reveal" style="--d:.12s" href="#/memory">
+        <span class="entry-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 4h14a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H9.5L5 20.5V5a1 1 0 0 1 1-1Z"/><path d="M8 9h8"/><path d="M8 12.5h5"/></svg>
+        </span>
+        <h3 data-i18n="ent_mw_t">记忆墙</h3>
+        <p data-i18n="ent_mw_d">写一封给森林的信，和大家一起说「辛苦音」。</p>
+        <span class="entry-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="entry reveal" style="--d:.19s" href="#/capsule">
+        <span class="entry-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 10V8a6 6 0 0 1 12 0v2"/><rect x="4.5" y="10" width="15" height="10" rx="2"/><path d="M12 13.5v3.2"/></svg>
+        </span>
+        <h3 data-i18n="ent_cp_t">时光胶囊</h3>
+        <p data-i18n="ent_cp_d">写信给未来的自己，在毕业一周年那天开启。</p>
+        <span class="entry-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="entry reveal" style="--d:.26s" href="#/rank">
+        <span class="entry-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 19l7-7 3 3-7 7-3-3Z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z"/><path d="M2 2l7.6 7.6"/><path d="M11 11l2 2"/></svg>
+        </span>
+        <h3 data-i18n="ent_rank_t">贡献榜</h3>
+        <p data-i18n="ent_rank_d">看看是谁在用记忆为森林添砖加瓦。</p>
+        <span class="entry-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="farewell card reveal">
+    <h2 class="farewell-title" data-i18n="fw_title">毕业公告 · 节选</h2>
+    <blockquote class="farewell-quote" data-i18n="fw_quote">「由于长期过度用嗓、长期居家等原因，身体和心理都出现了一些不小的问题，医嘱需要长期休养。」</blockquote>
+    <p class="farewell-note" data-i18n="fw_note">—— 2026 年 5 月 1 日 · 毕业公告（全文见 B 站动态）</p>
+  </section>
+</section>
+
+<!-- ============ 足迹时间轴 ============ -->
+<section class="page" data-page="timeline" id="page-timeline" hidden>
+  <header class="page-head">
+    <p class="page-kicker" data-i18n="tl_kicker">ARCHIVE · 2019 — 2026</p>
+    <h2 data-i18n="tl_title">足迹时间轴</h2>
+    <p class="page-desc" data-i18n="tl_desc">从初配信到毕业，七年的森林足迹。内容整理自公开资料，如有遗漏欢迎投稿勘误。</p>
+  </header>
+
+  <div class="filter-chips" role="group" aria-label="按年份筛选">
+    <button class="chip is-active" data-year="all" data-i18n="year_all">全部</button>
+    <button class="chip" data-year="2019">2019</button>
+    <button class="chip" data-year="2020">2020</button>
+    <button class="chip" data-year="2021">2021</button>
+    <button class="chip" data-year="2022">2022</button>
+    <button class="chip" data-year="2023">2023</button>
+    <button class="chip" data-year="2024">2024</button>
+    <button class="chip" data-year="2025">2025</button>
+    <button class="chip" data-year="2026">2026</button>
+  </div>
+
+  <div class="timeline" id="timeline" aria-live="polite"></div>
+
+  <p class="tl-cta reveal">
+    <a href="#/rank" data-i18n="tl_cta">看看是谁在为森林添砖加瓦 →</a>
+  </p>
+</section>
+
+<!-- ============ 记忆墙 ============ -->
+<section class="page" data-page="memory" id="page-memory" hidden>
+  <header class="page-head">
+    <p class="page-kicker" data-i18n="mw_kicker">MEMORY WALL · LETTERS TO THE FOREST</p>
+    <h2 data-i18n="mw_title">记忆墙</h2>
+    <p class="page-desc" data-i18n="mw_desc">这里挂着旅人们写给森林的信。写下一句「辛苦音」，让白菜知道森林一直有人记得她。</p>
+  </header>
+
+  <div class="write-box card reveal">
+    <button class="btn btn-primary write-toggle" id="write-toggle" data-i18n="mw_write">写一封给森林的信</button>
+    <form class="letter-form" id="letter-form" hidden>
+      <div class="form-row">
+        <label for="letter-name" data-i18n="f_name">昵称（可选）</label>
+        <input type="text" id="letter-name" maxlength="16" data-i18n-ph="ph_name" placeholder="匿名旅人">
+      </div>
+      <div class="form-row">
+        <label for="letter-tag" data-i18n="f_tag">信件标签</label>
+        <select id="letter-tag">
+          <option value="思念" data-i18n="tag_miss">思念</option>
+          <option value="感谢" data-i18n="tag_thanks">感谢</option>
+          <option value="祝福" data-i18n="tag_bless">祝福</option>
+          <option value="故事" data-i18n="tag_story">故事</option>
+          <option value="其他" data-i18n="tag_other">其他</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="letter-text" data-i18n="f_text">想说的话</label>
+        <textarea id="letter-text" rows="4" maxlength="500" data-i18n-ph="ph_text" placeholder="把想对白菜说的话写在这里……"></textarea>
+        <span class="char-count"><b id="char-count">0</b> / 500</span>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" data-i18n="f_send">寄出这封信</button>
+        <button type="button" class="btn btn-ghost write-cancel" data-i18n="f_cancel">再想想</button>
+      </div>
+      <p class="form-note" data-i18n="f_note">来信会先经过自动过滤与人工抽查，请温柔地写下每一句。</p>
+    </form>
+  </div>
+
+  <div class="wall-tools reveal">
+    <div class="filter-chips" role="group" aria-label="按标签筛选">
+      <button class="chip is-active" data-wtag="all" data-i18n="tag_all">全部</button>
+      <button class="chip" data-wtag="思念" data-i18n="tag_miss">思念</button>
+      <button class="chip" data-wtag="感谢" data-i18n="tag_thanks">感谢</button>
+      <button class="chip" data-wtag="祝福" data-i18n="tag_bless">祝福</button>
+      <button class="chip" data-wtag="故事" data-i18n="tag_story">故事</button>
+      <button class="chip" data-wtag="其他" data-i18n="tag_other">其他</button>
+    </div>
+    <div class="sort-switch" role="group" aria-label="排序">
+      <button class="chip is-active" data-sort="new" data-i18n="sort_new">最新</button>
+      <button class="chip" data-sort="hot" data-i18n="sort_hot">最热</button>
+    </div>
+  </div>
+
+  <div class="wall" id="wall" aria-live="polite"></div>
+  <p class="wall-note" data-i18n="mw_note">原型中的来信为演示数据；正式上线后，留言需经审核才会展示。</p>
+</section>
+
+<!-- ============ 时光胶囊 ============ -->
+<section class="page" data-page="capsule" id="page-capsule" hidden>
+  <header class="page-head">
+    <p class="page-kicker" data-i18n="cp_kicker">TIME CAPSULE · A LETTER TO THE FUTURE</p>
+    <h2 data-i18n="cp_title">时光胶囊</h2>
+    <p class="page-desc" data-i18n="cp_desc">写给未来的一封信。把它埋在森林里，等到约定之日，再回来开启。</p>
+  </header>
+
+  <div class="capsule-layout">
+    <div class="capsule-form card reveal">
+      <h3 class="card-title" data-i18n="cp_form_t">埋下一颗胶囊</h3>
+      <form id="capsule-form">
+        <div class="form-row">
+          <label for="cp-title" data-i18n="f_title">标题</label>
+          <input type="text" id="cp-title" maxlength="30" data-i18n-ph="ph_title" placeholder="致未来的自己">
+        </div>
+        <div class="form-row">
+          <label for="cp-text" data-i18n="f_text">信的内容</label>
+          <textarea id="cp-text" rows="5" maxlength="1000" data-i18n-ph="ph_cp_text" placeholder="写下此刻想对未来的自己、或对森林说的话……"></textarea>
+        </div>
+        <div class="form-row">
+          <label for="cp-unlock" data-i18n="f_unlock">开启时间</label>
+          <select id="cp-unlock">
+            <option value="2027-05-01" data-i18n="opt_1y">2027-05-01 · 毕业一周年</option>
+            <option value="2029-05-01" data-i18n="opt_3y">2029-05-01 · 三年之约</option>
+            <option value="2031-05-01" data-i18n="opt_5y">2031-05-01 · 五年之约</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="cp-mail" data-i18n="f_mail">邮箱（可选，用于开启提醒）</label>
+          <input type="email" id="cp-mail" maxlength="64" data-i18n-ph="ph_mail" placeholder="you@example.com">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" data-i18n="cp_bury">埋进森林</button>
+        </div>
+        <p class="form-note" data-i18n="cp_note">胶囊在开启前是私密的，森林承诺不会读取。开启后可选是否公开展示。</p>
+      </form>
+    </div>
+    <div class="capsule-guide card reveal" style="--d:.1s">
+      <h3 class="card-title" data-i18n="cp_guide_t">约定与规则</h3>
+      <ul class="guide-list">
+        <li data-i18n="cp_g1">默认在 2027 年 5 月 1 日 · 毕业一周年时开启；</li>
+        <li data-i18n="cp_g2">未到开启时间，任何人都看不到信的内容；</li>
+        <li data-i18n="cp_g3">留下邮箱，开启当天森林会寄来提醒；</li>
+        <li data-i18n="cp_g4">开启后，你决定这封信是留在心里，还是挂上记忆墙。</li>
+      </ul>
+      <p class="capsule-demo-note" data-i18n="cp_demo">原型演示：胶囊存于本地浏览器，正式版将安全存储于服务器。</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title reveal" data-i18n="cp_list_t">埋下的胶囊</h3>
+  <div class="capsules" id="capsules" aria-live="polite"></div>
+</section>
+
+<!-- ============ 贡献榜 ============ -->
+<section class="page" data-page="rank" id="page-rank" hidden>
+  <header class="page-head">
+    <p class="page-kicker" data-i18n="rk_kicker">CONTRIBUTORS · FOREST BUILDERS</p>
+    <h2 data-i18n="rk_title">贡献榜</h2>
+    <p class="page-desc" data-i18n="rk_desc">森林由许多人共同补全。以下是被采纳投稿最多的旅人——感谢你们，让记忆不再残缺。</p>
+  </header>
+
+  <div class="podium reveal" id="podium"></div>
+
+  <div class="rank-list card reveal" style="--d:.1s">
+    <h3 class="card-title" data-i18n="rk_sub">更多贡献者</h3>
+    <div class="rank-rows" id="rank-list"></div>
+  </div>
+
+  <p class="wall-note" data-i18n="rk_note">投稿入口将在正式版开放（需站长审核）；原型中的贡献数据为演示。</p>
+</section>
+
+<!-- ============ 关于本站 ============ -->
+<section class="page" data-page="about" id="page-about" hidden>
+  <header class="page-head">
+    <p class="page-kicker" data-i18n="ab_kicker">ABOUT THIS FOREST</p>
+    <h2 data-i18n="ab_title">关于本站</h2>
+  </header>
+
+  <div class="notice card reveal">
+    <h3 class="notice-title" data-i18n="ab_notice_t">重要声明</h3>
+    <p data-i18n="ab_notice_p1">本站是粉丝自发建立的<b>非官方</b>纪念与档案馆，与真白花音本人及其所属机构无关。</p>
+    <p data-i18n="ab_notice_p2">我们尊重她因健康原因做出的毕业决定，不催更、不请愿、不打扰。愿她安心休养。</p>
+  </div>
+
+  <div class="about-grid">
+    <article class="card reveal">
+      <h3 class="card-title" data-i18n="ab_who_t">我们是谁</h3>
+      <p data-i18n="ab_who_p">一群舍不得说再见、又希望好好道别的旅人。我们把 2019 到 2026 的足迹、梗与笑声收进这片森林，让后来的人也能认识这位温柔的白发公主。</p>
+    </article>
+    <article class="card reveal" style="--d:.08s">
+      <h3 class="card-title" data-i18n="ab_how_t">我们如何维护</h3>
+      <p data-i18n="ab_how_p1">本站由个人运营：留言自动过滤 + 人工抽查，投稿逐条人工审核。</p>
+      <p data-i18n="ab_how_p2">所有内容定期备份、可导出；即使某一天森林无人看守，也留有站务交接预案，让记忆不会失联。</p>
+    </article>
+    <article class="card reveal" style="--d:.16s">
+      <h3 class="card-title" data-i18n="ab_do_t">你可以做什么</h3>
+      <ul class="guide-list">
+        <li data-i18n="ab_do1">在记忆墙留下一封信；</li>
+        <li data-i18n="ab_do2">埋下一颗时光胶囊，赴未来的约；</li>
+        <li data-i18n="ab_do3">把珍藏的素材投稿进档案；</li>
+        <li data-i18n="ab_do4">把森林分享给同样记得她的人。</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="about-facts card reveal">
+    <h3 class="card-title" data-i18n="ab_facts_t">站点信息</h3>
+    <dl class="facts">
+      <div><dt data-i18n="ab_f1">域名</dt><dd>www.love-kanon.com</dd></div>
+      <div><dt data-i18n="ab_f2">备案</dt><dd data-i18n="ab_f2v">备案号占位（已备案）</dd></div>
+      <div><dt data-i18n="ab_f3">语言</dt><dd data-i18n="ab_f3v">中文 · 日本語</dd></div>
+      <div><dt data-i18n="ab_f4">版本</dt><dd data-i18n="ab_f4v">原型 v0.5 · 演示数据</dd></div>
+    </dl>
+    <p class="capsule-demo-note" data-i18n="ab_demo">本站所有展示数据均为原型演示内容，正式上线前将替换为经审核的真实内容。</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <p class="ft-line1" data-i18n="ft_line1">非官方粉丝纪念站 · 与真白花音本人及其运营方无关</p>
+  <p class="ft-line2">白菜的森林 · love-kanon.com <span aria-hidden="true">✦</span> <span data-i18n="ft_line2">愿森林永远记得你</span></p>
+  <p class="ft-meta" data-i18n="ft_meta">© 2026 · 原型演示数据仅供预览 · 备案号占位</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

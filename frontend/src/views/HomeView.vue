@@ -1,8 +1,9 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 import PageHero from '../components/PageHero.vue'
 import HeroEntryCard from '../components/HeroEntryCard.vue'
 import GlassCard from '../components/GlassCard.vue'
+import SeaOfLights from '../components/SeaOfLights.vue'
 import { api } from '../services/api'
 
 const props = defineProps({
@@ -13,8 +14,10 @@ const props = defineProps({
 })
 
 const summary = ref(null)
+let pollTimer = null
 
 const cards = computed(() => summary.value?.stats ?? [])
+const lightsActive = computed(() => Boolean(summary.value?.lights?.active))
 
 const countdown = computed(() => {
   const { copy, lang } = props
@@ -35,18 +38,28 @@ const countdown = computed(() => {
   }
 })
 
-onMounted(async () => {
+async function fetchSummary() {
   try {
     const res = await api.requestJson('/api/home/summary')
     summary.value = res.data ?? null
   } catch {
     summary.value = null
   }
+}
+
+onMounted(async () => {
+  await fetchSummary()
+  pollTimer = setInterval(fetchSummary, 60000)
+})
+
+onBeforeUnmount(() => {
+  if (pollTimer) clearInterval(pollTimer)
 })
 </script>
 
 <template>
   <section class="page page-home is-active">
+    <SeaOfLights :active="lightsActive" :count="40" />
     <PageHero :kicker="copy.hero_kicker" :title="copy.hero_title" :subtitle="copy.hero_sub">
       <template #meta>
         <span>真白花音 · 眞白 かのん · Mashiro Kanon</span>

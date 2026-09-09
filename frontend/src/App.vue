@@ -54,7 +54,6 @@ const navItems = computed(() => [
   { to: '/memory', label: current.value.nav_memory },
   { to: '/capsule', label: current.value.nav_capsule },
   { to: '/rank', label: current.value.nav_rank },
-  { to: '/decryption', label: current.value.nav_decryption },
   { to: '/about', label: current.value.nav_about },
 ])
 

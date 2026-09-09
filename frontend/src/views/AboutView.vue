@@ -1,5 +1,9 @@
 <script setup>
 import SectionHeader from '../components/SectionHeader.vue'
+
+defineProps({
+  copy: { type: Object, default: () => ({}) },
+})
 </script>
 
 <template>
@@ -33,15 +37,39 @@ import SectionHeader from '../components/SectionHeader.vue'
       </article>
     </div>
 
-    <div class="about-facts card reveal is-visible">
-      <h3 class="card-title">站点信息</h3>
-      <dl class="facts">
-        <div><dt>域名</dt><dd>www.love-kanon.com</dd></div>
-        <div><dt>备案</dt><dd>备案号占位（已备案）</dd></div>
-        <div><dt>语言</dt><dd>中文 · 日本語</dd></div>
-        <div><dt>版本</dt><dd>Vue 原型 · 演示数据</dd></div>
-      </dl>
-      <p class="capsule-demo-note">本站所有展示数据均为原型演示内容，正式上线前将替换为经审核的真实内容。</p>
+    <div class="contact-card card reveal is-visible">
+      <h3 class="card-title">{{ copy.contact_title || '联系我' }}</h3>
+      <p class="contact-desc">{{ copy.contact_desc || '森林的维护者就在这里 —— 投稿、勘误、合作或一句问候，都欢迎来信。' }}</p>
+      <div class="contact-grid">
+        <a class="contact-item" href="https://qm.qq.com/cgi-bin/qm/qr?k=2608796981" target="_blank" rel="noopener" aria-label="QQ">
+          <span class="contact-icon qq" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3.5c-3.8 0-6.8 2.6-6.8 6.2 0 1.9 1 3.6 2.6 4.7-.1.8-.5 2.1-1.5 3.2 2-.2 3.6-1.3 4.4-2 .4.1.9.1 1.3.1 3.8 0 6.8-2.6 6.8-6.2S15.8 3.5 12 3.5Z"/><circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/><path d="M9 13c.7.9 3.3.9 4-.1"/></svg>
+          </span>
+          <span class="contact-info"><b>{{ copy.ct_qq || 'QQ' }}</b><i>2608796981</i></span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="contact-item" href="https://space.bilibili.com/293942714" target="_blank" rel="noopener" aria-label="哔哩哔哩">
+          <span class="contact-icon bili" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="6.5" width="19" height="11" rx="2.5"/><path d="M7 9l1.5 3L7 15"/><path d="M11.5 9v6M11.5 9h2a1.5 1.5 0 0 1 0 3h-2"/><path d="M17 11.2a1.5 1.5 0 1 1 0 2.6"/><circle cx="8.2" cy="5.2" r="1.1" fill="currentColor" stroke="none"/><circle cx="15.8" cy="5.2" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span class="contact-info"><b>{{ copy.ct_bili || '哔哩哔哩' }}</b><i>@雪梨_Channel</i></span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="contact-item" aria-label="邮箱">
+          <span class="contact-icon mail" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 6.5 12 13 20.5 6.5"/></svg>
+          </span>
+          <span class="contact-info"><b>{{ copy.ct_mail || '邮箱' }}</b><i>2608796981@qq.com</i></span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="contact-item" href="https://t.me/+gTUfkkDJQ904OTgx" target="_blank" rel="noopener" aria-label="Telegram">
+          <span class="contact-icon tg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 5.5 3.8 11.3l4.7 1.7 1.8 5.4 3.2-3.2 5-9.7Z"/><path d="M9.5 17.4 13 13.5"/></svg>
+          </span>
+          <span class="contact-info"><b>{{ copy.ct_tg || 'Telegram' }}</b><i>@白菜森林</i></span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   </section>
 </template>

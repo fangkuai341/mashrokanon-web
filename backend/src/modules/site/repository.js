@@ -8,11 +8,18 @@ import {
 } from '../content/data.js'
 
 export const COUNTDOWN_SETTING_KEY = 'home.countdown'
+export const LIGHTS_SETTING_KEY = 'home.lights'
 
 export const DEFAULT_COUNTDOWN = {
   labelZh: '下一个纪念日 · 生日',
   labelJa: '次の記念日 · 卒業百日祭',
   date: '2026-12-29',
+}
+
+export const DEFAULT_LIGHTS = {
+  enabled: false,
+  startAt: '',
+  endAt: '',
 }
 
 export function normalizeCountdown(raw) {
@@ -29,6 +36,35 @@ export function normalizeCountdown(raw) {
     labelJa: String(value?.labelJa?.trim?.() || DEFAULT_COUNTDOWN.labelJa),
     date: String(value?.date?.trim?.() || DEFAULT_COUNTDOWN.date),
   }
+}
+
+export function normalizeLights(raw) {
+  let value = raw
+  if (typeof raw === 'string') {
+    try {
+      value = JSON.parse(raw)
+    } catch {
+      value = null
+    }
+  }
+  const enabled = Boolean(value?.enabled)
+  const startAt = typeof value?.startAt === 'string' ? value.startAt.trim() : ''
+  const endAt = typeof value?.endAt === 'string' ? value.endAt.trim() : ''
+  return { enabled, startAt, endAt }
+}
+
+export function isLightsActive(lights) {
+  const cfg = normalizeLights(lights)
+  if (cfg.enabled) return true
+  const start = cfg.startAt ? Date.parse(cfg.startAt) : NaN
+  const end = cfg.endAt ? Date.parse(cfg.endAt) : NaN
+  const now = Date.now()
+  const hasStart = !Number.isNaN(start)
+  const hasEnd = !Number.isNaN(end)
+  if (hasStart && hasEnd) return now >= start && now <= end
+  if (hasStart && !hasEnd) return now >= start
+  if (!hasStart && hasEnd) return now <= end
+  return false
 }
 
 function computeDaysLeft(dateText) {
@@ -53,17 +89,24 @@ export const siteRepository = {
       create: { settingKey, settingValue },
     })
   },
+  async getLightsSetting() {
+    const rows = await this.getSettings([LIGHTS_SETTING_KEY])
+    return normalizeLights(rows[0]?.settingValue)
+  },
   async getHomeSummary() {
-    const [timelineCount, approvedSubmissionCount, approvedMemoryCount, countdownSetting] = await Promise.all([
+    const [timelineCount, approvedSubmissionCount, approvedMemoryCount, countdownSetting, lightsSetting] = await Promise.all([
       countTimelineEvents(),
       prisma.communitySubmission.count({ where: { status: 'approved' } }),
       prisma.memoryLetter.count({ where: { status: 'approved' } }),
       this.getCountdownSetting(),
+      this.getLightsSetting(),
     ])
     const countdown = normalizeCountdown(countdownSetting)
+    const lights = normalizeLights(lightsSetting)
 
     return {
       countdown: { ...countdown, days: computeDaysLeft(countdown.date) },
+      lights: { ...lights, active: isLightsActive(lights) },
       stats: [
         { value: '2019–2026', label: '七年森林旅程' },
         { value: '216万+', label: '粉丝记忆' },

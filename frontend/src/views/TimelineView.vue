@@ -39,7 +39,7 @@ async function loadTimeline() {
         ...item,
         y,
         d: `${month}.${day}`,
-        image: item.image ?? 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=960&q=80',
+        image: item.image ? `${import.meta.env.VITE_API_BASE ?? ''}${item.image}` : 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=960&q=80',
       }
     })
   } catch {

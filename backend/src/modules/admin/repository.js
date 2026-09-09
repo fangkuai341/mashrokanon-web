@@ -32,6 +32,7 @@ export const adminRepository = {
           ja: submission.ja || '',
           tagsJson: Array.isArray(submission.tagsJson) ? submission.tagsJson : [],
           link: submission.source || null,
+          image: submission.image || null,
           featured: false,
         },
       })

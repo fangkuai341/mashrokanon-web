@@ -1214,6 +1214,49 @@ main {
 .facts dt { font-size: 13px; color: var(--ink-faint); letter-spacing: 0.08em; }
 .facts dd { font-size: 13px; color: var(--ink); text-align: right; }
 
+/* ---------- 联系我 ---------- */
+
+.contact-card { max-width: 760px; margin: 0 auto; }
+.contact-desc { font-size: 13.5px; color: var(--ink-dim); line-height: 1.8; margin-bottom: 18px; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(27, 21, 47, 0.55);
+  transition: transform 0.28s var(--ease), border-color 0.28s, background 0.28s, box-shadow 0.28s;
+}
+.contact-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(183, 163, 255, 0.45);
+  background: rgba(34, 26, 58, 0.78);
+  box-shadow: 0 12px 30px -18px rgba(0,0,0,.85), 0 0 24px -12px rgba(143,118,232,.35);
+}
+.contact-icon {
+  flex: 0 0 auto;
+  width: 44px; height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.contact-icon.qq   { color: #4da3ff; background: rgba(77,163,255,.14); border-color: rgba(77,163,255,.30); }
+.contact-icon.bili { color: #ff8fb7; background: rgba(255,143,183,.13); border-color: rgba(255,143,183,.30); }
+.contact-icon.mail { color: var(--amber); background: var(--amber-soft); border-color: rgba(255,205,150,.32); }
+.contact-icon.tg   { color: #6ec1ff; background: rgba(110,193,255,.13); border-color: rgba(110,193,255,.30); }
+.contact-info { display: flex; flex-direction: column; line-height: 1.35; min-width: 0; }
+.contact-info b { font-size: 13.5px; color: var(--ink); letter-spacing: .06em; }
+.contact-info i { font-style: normal; font-size: 12px; color: var(--ink-faint); word-break: break-all; }
+.contact-arrow { margin-left: auto; font-size: 16px; color: var(--ink-faint); transition: transform .25s var(--ease), color .25s; }
+.contact-item:hover .contact-arrow { transform: translate(3px, -3px); color: var(--acc-bright); }
+
 /* ---------- 页脚 ---------- */
 
 .site-footer {
@@ -1278,6 +1321,7 @@ main {
   .capsules { grid-template-columns: 1fr; }
   .wall { columns: 1; }
   .facts { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
   .site-nav { justify-content: flex-start; }
   .hero-actions .btn { width: 100%; }
 }

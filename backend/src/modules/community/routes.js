@@ -9,6 +9,7 @@ const createSubmissionSchema = z.object({
   ja: z.string().trim().max(3000).optional().default(''),
   tags: z.array(z.string().trim().min(1).max(20)).max(10).optional().default([]),
   source: z.string().trim().max(300).optional().default(''),
+  image: z.string().trim().max(500).optional().default(''),
   name: z.string().trim().max(40).optional().default(''),
 })
 

@@ -93,6 +93,7 @@ model TimelineEvent {
   ja        String   @db.Text
   tagsJson  Json
   link      String?  @db.VarChar(300)
+  image     String?  @db.VarChar(500)
   featured  Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -110,6 +111,7 @@ model CommunitySubmission {
   ja           String   @db.Text
   tagsJson     Json
   source       String?  @db.VarChar(300)
+  image        String?  @db.VarChar(500)
   submitter    String   @default("匿名")
   status       String   @default("pending")
   reason       String?

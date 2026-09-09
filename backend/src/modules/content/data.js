@@ -9,6 +9,7 @@ function toView(event) {
     ja: event.ja,
     tags: Array.isArray(event.tagsJson) ? event.tagsJson : [],
     link: event.link ?? null,
+    image: event.image ?? null,
     featured: event.featured,
   }
 }
@@ -43,6 +44,7 @@ export async function createTimelineEvent(data) {
       ja: data.ja,
       tagsJson: data.tags,
       link: data.link?.trim() || null,
+      image: data.image?.trim() || null,
       featured: Boolean(data.featured),
     },
   })
@@ -59,6 +61,7 @@ export async function updateTimelineEvent(id, data) {
       ...(data.ja ? { ja: data.ja } : {}),
       ...(data.tags ? { tagsJson: data.tags } : {}),
       ...(data.link !== undefined ? { link: data.link?.trim() || null } : {}),
+      ...(data.image !== undefined ? { image: data.image?.trim() || null } : {}),
       ...(typeof data.featured === 'boolean' ? { featured: data.featured } : {}),
     },
   })

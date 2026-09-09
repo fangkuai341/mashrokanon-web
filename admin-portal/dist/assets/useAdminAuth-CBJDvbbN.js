@@ -1,1 +1,0 @@
-import{s as e,y as t}from"./index-BrySF3Ic.js";var n=`forest.admin.token`,r=t(localStorage.getItem(n)??``);function i(){let t=e(()=>!!r.value);function i(e){r.value=e,localStorage.setItem(n,e)}function a(){r.value=``,localStorage.removeItem(n)}return{token:r,isLoggedIn:t,setToken:i,clearToken:a}}export{i as t};

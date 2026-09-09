@@ -1,14 +1,18 @@
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
 import rateLimit from '@fastify/rate-limit'
+import fastifyMultipart from '@fastify/multipart'
+import fastifyStatic from '@fastify/static'
+import path from 'node:path'
 import { registerSiteRoutes } from './modules/site/routes.js'
 import { registerMemoryLetterRoutes } from './modules/memory-letters/routes.js'
 import { registerCapsuleRoutes } from './modules/capsules/routes.js'
 import { registerAdminRoutes } from './modules/admin/routes.js'
 import { registerCommunityRoutes } from './modules/community/routes.js'
+import { registerUploadRoutes } from './modules/upload/routes.js'
 import { errorHandler } from './middleware/errorHandler.js'
 
-export function createApp() {
+export async function createApp() {
   const app = Fastify({ logger: true })
 
   // Tolerate empty JSON bodies (e.g. POST actions that carry no payload but
@@ -32,12 +36,22 @@ export function createApp() {
   })
   app.register(rateLimit, { max: 100, timeWindow: '1 minute' })
 
+  await app.register(fastifyMultipart, {
+    limits: { fileSize: 5 * 1024 * 1024, files: 1 },
+  })
+  await app.register(fastifyStatic, {
+    root: path.resolve(process.cwd(), 'uploads'),
+    prefix: '/uploads/',
+    decorateReply: false,
+  })
+
   app.get('/health', async () => ({ ok: true }))
   registerSiteRoutes(app)
   registerMemoryLetterRoutes(app)
   registerCapsuleRoutes(app)
   registerAdminRoutes(app)
   registerCommunityRoutes(app)
+  registerUploadRoutes(app)
 
   return app
 }

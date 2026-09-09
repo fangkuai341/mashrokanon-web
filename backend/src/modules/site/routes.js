@@ -1,4 +1,4 @@
-import { siteRepository, COUNTDOWN_SETTING_KEY, normalizeCountdown } from './repository.js'
+import { siteRepository, COUNTDOWN_SETTING_KEY, LIGHTS_SETTING_KEY, normalizeCountdown, normalizeLights, isLightsActive } from './repository.js'
 import { createTimelineEventSchema, updateSiteSettingsSchema, updateTimelineEventSchema } from './validation.js'
 import { requireAdmin } from '../../middleware/adminAuth.js'
 
@@ -9,15 +9,32 @@ export function registerSiteRoutes(app) {
   })
 
   app.get('/api/admin/site-settings', { preHandler: requireAdmin }, async () => {
-    const countdown = await siteRepository.getCountdownSetting()
-    return { success: true, data: { countdown } }
+    const [countdown, lights] = await Promise.all([siteRepository.getCountdownSetting(), siteRepository.getLightsSetting()])
+    const normalizedLights = normalizeLights(lights)
+    return { success: true, data: { countdown, lights: { ...normalizedLights, active: isLightsActive(normalizedLights) } } }
   })
 
   app.put('/api/admin/site-settings', { preHandler: requireAdmin }, async (request) => {
-    const { countdown } = updateSiteSettingsSchema.parse(request.body)
-    const settingValue = JSON.stringify(normalizeCountdown(countdown))
-    await siteRepository.upsertSetting(COUNTDOWN_SETTING_KEY, settingValue)
-    return { success: true, data: { countdown: normalizeCountdown(settingValue) } }
+    const parsed = updateSiteSettingsSchema.parse(request.body)
+    const result = {}
+    if (parsed.countdown) {
+      const settingValue = JSON.stringify(normalizeCountdown(parsed.countdown))
+      await siteRepository.upsertSetting(COUNTDOWN_SETTING_KEY, settingValue)
+      result.countdown = normalizeCountdown(settingValue)
+    }
+    if (parsed.lights) {
+      const normalized = normalizeLights(parsed.lights)
+      const settingValue = JSON.stringify(normalized)
+      await siteRepository.upsertSetting(LIGHTS_SETTING_KEY, settingValue)
+      result.lights = { ...normalizeLights(settingValue), active: isLightsActive(normalizeLights(settingValue)) }
+    }
+    if (!result.countdown) result.countdown = await siteRepository.getCountdownSetting()
+    if (!result.lights) {
+      const l = await siteRepository.getLightsSetting()
+      const n = normalizeLights(l)
+      result.lights = { ...n, active: isLightsActive(n) }
+    }
+    return { success: true, data: result }
   })
 
   app.get('/api/timeline', async (request) => {

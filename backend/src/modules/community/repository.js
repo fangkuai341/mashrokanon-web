@@ -10,6 +10,7 @@ export const communityRepository = {
         ja: data.ja || '',
         tagsJson: Array.isArray(data.tags) ? data.tags : [],
         source: data.source?.trim() || null,
+        image: data.image?.trim() || null,
         submitter: data.name?.trim() || '匿名',
         status: 'pending',
       },

@@ -186,7 +186,8 @@ button {
   z-index: 50;
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: space-between;
+  gap: 16px;
   flex-wrap: wrap;
   padding: 14px clamp(16px, 4vw, 44px);
   background: rgba(6, 10, 20, 0.84);
@@ -194,11 +195,20 @@ button {
   border-bottom: 1px solid rgba(238, 244, 255, 0.08);
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-right: auto;
+  flex: 0 0 auto;
   background: transparent;
   border: 0;
   color: inherit;
@@ -251,14 +261,17 @@ button {
 }
 
 .site-nav {
-  order: 3;
-  width: 100%;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;
   overflow-x: auto;
   scrollbar-width: none;
+}
+
+.site-header .lang-switch {
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 
 .site-nav::-webkit-scrollbar {
@@ -279,7 +292,7 @@ button {
 }
 
 .site-nav a:hover {
-  transform: translateY(-1px);
+
   background: rgba(238, 244, 255, 0.06);
   color: var(--paper);
   border-color: rgba(238, 244, 255, 0.08);
@@ -457,7 +470,6 @@ button {
 }
 
 .hero-sub {
-  max-width: 620px;
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(16px, 2.2vw, 19px);
@@ -1124,6 +1136,234 @@ button {
   box-shadow: 0 0 0 3px rgba(138, 148, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+/* —— 主题化下拉框：毛玻璃 + 霓虹边框 + 自定义箭头 —— */
+.form-row select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 46px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background-color: rgba(8, 12, 22, 0.88);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Crect x='1' y='1' width='18' height='18' rx='9' stroke='rgba(141,159,212,0.18)'/%3E%3Cpath d='M6.2 8.2L10 12L13.8 8.2' stroke='%239daccb' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px 20px;
+  transition:
+    border-color 0.22s var(--ease),
+    background-color 0.22s var(--ease),
+    box-shadow 0.22s var(--ease),
+    color 0.22s var(--ease);
+}
+
+.form-row select:hover {
+  border-color: rgba(138, 148, 255, 0.28);
+  background-color: rgba(12, 18, 36, 0.96);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 8px 24px -18px rgba(138, 148, 255, 0.35);
+}
+
+.form-row select:focus {
+  border-color: rgba(138, 148, 255, 0.44);
+  background-color: rgba(12, 18, 36, 0.98);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Crect x='1' y='1' width='18' height='18' rx='9' stroke='rgba(127,226,232,0.32)'/%3E%3Cpath d='M6.2 8.2L10 12L13.8 8.2' stroke='%237fe2e8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  box-shadow:
+    0 0 0 3px rgba(138, 148, 255, 0.12),
+    0 10px 28px -18px rgba(127, 226, 232, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.form-row select:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+  background-color: rgba(8, 12, 22, 0.62);
+  border-color: rgba(141, 159, 212, 0.1);
+  color: rgba(238, 244, 255, 0.42);
+}
+
+.form-row select option {
+  background: #0e1730;
+  color: var(--paper);
+  padding: 10px 12px;
+}
+
+.form-row select option:checked {
+  background: linear-gradient(135deg, rgba(138, 148, 255, 0.28), rgba(127, 226, 232, 0.18));
+  color: #f7fbff;
+}
+
+/* —— 日期输入：与下拉框同款毛玻璃 + 整块可点唤起日历 —— */
+.form-row input[type='date'] {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 46px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color-scheme: dark;
+  background-color: rgba(8, 12, 22, 0.88);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Crect x='1' y='1' width='18' height='18' rx='9' stroke='rgba(141,159,212,0.18)'/%3E%3Cpath d='M6 7.2h8M6.8 5V7M13.2 5V7M5.8 7.8h8.4v6.1c0 .9-.7 1.6-1.6 1.6H7.4c-.9 0-1.6-.7-1.6-1.6V7.8Z' stroke='%239daccb' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7.2 11h2M10.8 11h2M7.2 13h5.6' stroke='%239daccb' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px 20px;
+  transition:
+    border-color 0.22s var(--ease),
+    background-color 0.22s var(--ease),
+    box-shadow 0.22s var(--ease);
+}
+
+.form-row input[type='date']:hover {
+  border-color: rgba(138, 148, 255, 0.28);
+  background-color: rgba(12, 18, 36, 0.96);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 8px 24px -18px rgba(138, 148, 255, 0.35);
+}
+
+.form-row input[type='date']:focus {
+  border-color: rgba(138, 148, 255, 0.44);
+  background-color: rgba(12, 18, 36, 0.98);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Crect x='1' y='1' width='18' height='18' rx='9' stroke='rgba(127,226,232,0.32)'/%3E%3Cpath d='M6 7.2h8M6.8 5V7M13.2 5V7M5.8 7.8h8.4v6.1c0 .9-.7 1.6-1.6 1.6H7.4c-.9 0-1.6-.7-1.6-1.6V7.8Z' stroke='%237fe2e8' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7.2 11h2M10.8 11h2M7.2 13h5.6' stroke='%237fe2e8' stroke-width='1.15' stroke-linecap='round'/%3E%3C/svg%3E");
+  box-shadow:
+    0 0 0 3px rgba(138, 148, 255, 0.12),
+    0 10px 28px -18px rgba(127, 226, 232, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* 空值时文字用占位色，有值后切回正文色 */
+.form-row input[type='date']:invalid {
+  color: rgba(238, 244, 255, 0.42);
+}
+
+.form-row input[type='date']::-webkit-datetime-edit {
+  padding: 0;
+}
+
+.form-row input[type='date']::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+.form-row input[type='date']::-webkit-datetime-edit-text,
+.form-row input[type='date']::-webkit-datetime-edit-month-field,
+.form-row input[type='date']::-webkit-datetime-edit-day-field,
+.form-row input[type='date']::-webkit-datetime-edit-year-field {
+  color: inherit;
+}
+
+/* 整块可点：把原生日历按钮铺满整个输入框，视觉上保留自定义图标 */
+.form-row input[type='date']::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+  /* 扩大点击热区，覆盖整个输入框而不仅是图标 */
+  display: block;
+}
+
+.form-row input[type='date']::-moz-calendar-picker-indicator {
+  opacity: 0;
+}
+
+/* 日期行外层：点击任意处都能聚焦 */
+.form-row--date {
+  position: relative;
+}
+
+.form-row--date input[type='date'] {
+  cursor: pointer;
+}
+
+/* —— 文件选择：与下拉/日期同款毛玻璃，按钮做成霓虹药丸 —— */
+.form-row input[type='file'] {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 12px 8px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(141, 159, 212, 0.16);
+  background: rgba(8, 12, 22, 0.88);
+  color: rgba(238, 244, 255, 0.62);
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 0.22s var(--ease),
+    background-color 0.22s var(--ease),
+    box-shadow 0.22s var(--ease);
+}
+
+.form-row input[type='file']:hover {
+  border-color: rgba(138, 148, 255, 0.28);
+  background: rgba(12, 18, 36, 0.96);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 8px 24px -18px rgba(138, 148, 255, 0.35);
+  color: rgba(238, 244, 255, 0.82);
+}
+
+.form-row input[type='file']:focus {
+  outline: none;
+  border-color: rgba(138, 148, 255, 0.42);
+  background: rgba(12, 18, 36, 0.98);
+  box-shadow:
+    0 0 0 3px rgba(138, 148, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.form-row input[type='file']::file-selector-button,
+.form-row input[type='file']::-webkit-file-upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-right: 12px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(138, 148, 255, 0.26);
+  background: linear-gradient(135deg, rgba(138, 148, 255, 0.2), rgba(127, 226, 232, 0.14));
+  color: var(--paper);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition:
+    transform 0.2s var(--ease),
+    background 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-row input[type='file']:hover::file-selector-button,
+.form-row input[type='file']:hover::-webkit-file-upload-button {
+  border-color: rgba(127, 226, 232, 0.32);
+  background: linear-gradient(135deg, rgba(138, 148, 255, 0.28), rgba(127, 226, 232, 0.2));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 6px 18px -14px rgba(138, 148, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.form-row input[type='file']:active::file-selector-button,
+.form-row input[type='file']:active::-webkit-file-upload-button {
+  transform: translateY(0);
+  background: linear-gradient(135deg, rgba(138, 148, 255, 0.18), rgba(127, 226, 232, 0.1));
+}
+
+.form-row input[type='file']:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
+
 .char-count {
   display: block;
   margin-top: 6px;
@@ -1400,6 +1640,117 @@ button {
 .about-facts {
   max-width: 760px;
   margin: 0 auto;
+}
+
+.contact-card {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.contact-desc {
+  margin: 0 0 18px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: rgba(238, 244, 255, 0.72);
+}
+
+.contact-tip {
+  margin: 14px 0 0;
+  font-size: 11.5px;
+  line-height: 1.8;
+  color: rgba(238, 244, 255, 0.48);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(141, 159, 212, 0.16);
+  background: linear-gradient(180deg, rgba(15, 24, 43, 0.9), rgba(10, 16, 31, 0.86));
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.26s var(--ease), border-color 0.26s, background 0.26s, box-shadow 0.26s;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(138, 148, 255, 0.32);
+  background: linear-gradient(180deg, rgba(18, 28, 52, 0.96), rgba(12, 18, 36, 0.92));
+  box-shadow: 0 18px 36px -24px rgba(5, 10, 24, 0.85), 0 0 22px -12px rgba(138, 148, 255, 0.28);
+}
+
+.contact-icon {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.contact-icon.qq {
+  color: #7fb6ff;
+  background: rgba(96, 150, 255, 0.14);
+  border-color: rgba(96, 150, 255, 0.28);
+}
+
+.contact-icon.bili {
+  color: #ff8fb7;
+  background: rgba(255, 143, 183, 0.12);
+  border-color: rgba(255, 143, 183, 0.26);
+}
+
+.contact-icon.mail {
+  color: var(--accent-2);
+  background: rgba(127, 226, 232, 0.1);
+  border-color: rgba(127, 226, 232, 0.22);
+}
+
+.contact-icon.tg {
+  color: #6ec1ff;
+  background: rgba(110, 193, 255, 0.12);
+  border-color: rgba(110, 193, 255, 0.26);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.contact-info b {
+  font-size: 13.5px;
+  color: var(--paper);
+  letter-spacing: 0.06em;
+}
+
+.contact-info i {
+  font-style: normal;
+  font-size: 12px;
+  color: rgba(238, 244, 255, 0.58);
+  word-break: break-all;
+}
+
+.contact-arrow {
+  margin-left: auto;
+  font-size: 16px;
+  color: rgba(238, 244, 255, 0.42);
+  transition: transform 0.22s var(--ease), color 0.22s;
+}
+
+.contact-item:hover .contact-arrow {
+  transform: translate(3px, -3px);
+  color: var(--accent-2);
 }
 
 .facts {
@@ -1961,8 +2312,12 @@ body:has(.admin-shell) {
 
   .capsules,
   .wall,
-  .facts {
+  .facts,
+  .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .wall {
     columns: 1;
   }
 
